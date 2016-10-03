@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <!-- we have to configure the apiClient bean in order for the example to be able to connect to the server -->
+    <bean id="apiClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean" lazy-init="true">
+        <property name="serviceUrl" value="http://localhost:8080/jbilling/hessian/ApiService"/>
+        <property name="serviceInterface" value="com.sapienter.jbilling.server.util.IWebServicesSessionBean"/>
+        <property name="hessian2" value="true"/>
+        <property name="username" value="admin;1"/>
+        <property name="password" value="123qwe"/>
+    </bean>
+
+</beans>
